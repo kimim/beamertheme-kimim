@@ -1,0 +1,8 @@
+A simple beamer theme to generate clean slides
+
+Features:
+1. title page background and logo is automatically picked from beamer/bg.svg and beamer/logo.svg
+2. each frame has a thin progress bar, changing color according to page number
+3. Appendix section is a empty frame with a large logo
+
+A simple demo with UML diagrams here: https://github.com/kimim/beamer-plantuml
