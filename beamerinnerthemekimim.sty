@@ -1,0 +1,126 @@
+% A elegant LaTeX-Beamer theme for everyone to use.
+% Copyright (C) 2021 Kimi Ma
+
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+% This file is part of beamertheme-kimim.
+
+% If problems/bugs are found or enhancements are desired, please contact
+% me over: https://github.com/kimim/beamertheme-kimim
+
+\ProvidesPackage{beamerinnerthemekimim}[v2.0.0]
+
+\mode<presentation>
+
+\def\itemsymbol{\raisebox{0.3ex}{\small$\bullet$}}
+
+\defbeamertemplate*{section in toc}{kimim}{%
+  \hspace{0.5em} \inserttocsectionnumber.~\inserttocsection
+}
+
+\defbeamertemplate*{subsection in toc}{kimim}{%
+  \hspace{1.5em} \inserttocsectionnumber.\inserttocsubsectionnumber~\inserttocsubsection\par
+}
+
+\defbeamertemplate*{subsubsection in toc}{kimim}{%
+}
+
+\defbeamertemplate*{itemize item}{kimim}{%
+  \usebeamerfont*{itemize item}\itemsymbol
+}
+
+\defbeamertemplate*{itemize subitem}{kimim}{%
+  \usebeamerfont*{itemize subitem}\itemsymbol
+}
+
+\defbeamertemplate*{itemize subsubitem}{kimim}{%
+  \usebeamerfont*{itemize subsubitem}\itemsymbol
+}
+
+\defbeamertemplate*{bibliography item}{kimim}{%
+  \insertbiblabel
+}
+
+\setlength{\abovecaptionskip}{0ex}
+\setlength{\belowcaptionskip}{1ex}
+
+\setbeamertemplate{caption}{%
+  \insertcaption%
+}
+
+\setbeamertemplate{background}{
+  \ifnum\thepage=1%
+  \includesvg[width=1\paperwidth]{\backgroundpath}%
+  \fi%
+}
+
+%% Template: Title page
+\defbeamertemplate*{title page}{kimim}[1][]
+{
+  \usebeamerfont{title}
+  \vskip 160pt
+%%   \begin{beamercolorbox}[sep=0pt, wd=.95\paperwidth, left]{headline}
+%%     \rule{0.1in}{0.02in}
+%%   \end{beamercolorbox}
+  \begin{beamercolorbox}[sep=0ex,wd=0.95\paperwidth,dp=1ex]{headline}
+    \parbox{\linewidth}{%
+      \begin{beamercolorbox}[wd=\textwidth]{title}%
+        \vskip 1pt
+        {\inserttitle}%
+      \end{beamercolorbox}
+      \vskip 3pt
+      \begin{beamercolorbox}[sep=0mm, wd=\textwidth]{author}%
+        \ifx\insertsubtitle\@empty%
+          \else%
+          {\usebeamerfont{subtitle}\insertsubtitle}\par%
+        \fi%
+        \vskip 3pt
+        \usebeamerfont{author}{\insertauthor},\hspace{5pt}%
+        \usebeamerfont{date}{\insertdate}%
+        \ifx\insertinstitute\@empty%
+          \else%
+          {\usebeamerfont{institute}\insertinstitute}%
+        \fi%
+      \end{beamercolorbox}%
+    }%
+  \end{beamercolorbox}
+}
+
+%% Template: Section Page
+\defbeamertemplate{section}{kimim}{%
+  \insertsectionnumber.\hspace*{1ex}\insertsection%
+}
+
+\AtBeginSection[]{
+  \frame[plain,noframenumbering]{\sectionpage}
+}
+
+\defbeamertemplate*{section page}{kimim}[1][]
+{
+  \usebeamerfont{title}
+  \vskip 50pt
+%%   \begin{beamercolorbox}[sep=0ex, wd=.95\paperwidth, left]{headline}
+%%     \rule{0.1in}{0.02in}
+%%   \end{beamercolorbox}
+  \begin{beamercolorbox}[sep=0ex,wd=.95\paperwidth, left]{headline}
+    \parbox{\linewidth}{%
+      \begin{beamercolorbox}[wd=\textwidth]{section title}%
+        {\insertsection}%
+        \vskip 3pt
+      \end{beamercolorbox}
+    }%
+  \end{beamercolorbox}
+}
+
+\mode<all>

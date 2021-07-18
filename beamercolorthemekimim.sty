@@ -1,0 +1,93 @@
+% A elegant LaTeX-Beamer theme for everyone to use.
+% Copyright (C) 2021 Kimi Ma
+
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+% This file is part of beamertheme-kimim.
+
+% If problems/bugs are found or enhancements are desired, please contact
+% me over: https://github.com/kimim/beamertheme-kimim
+
+\ProvidesPackage{beamercolorthemekimim}[v2.0.0]
+\RequirePackage{ifthen}
+\mode<presentation>
+
+\newboolean{darkmode}
+\setboolean{darkmode}{false}
+
+\DeclareOptionBeamer{darkmode}{\setboolean{darkmode}{true}}
+\ProcessOptionsBeamer
+
+\definecolor{kimim@text@black}{RGB}{0,0,0}
+\definecolor{kimim@text@gray}{RGB}{113,113,113}
+\definecolor{kimim@text@whiter_gray}{RGB}{160,160,160}
+\definecolor{kimim@text@red}{RGB}{255,0,15}
+\definecolor{kimim@text@white}{RGB}{255,255,255}
+\definecolor{kimim@text@blockbg}{HTML}{f5f5f5}
+\definecolor{kimim@text@orange}{HTML}{5577ff}
+
+\newcommand{\beamertitlecolor}{kimim@text@black}
+\newcommand{\beamerheadlinecolor}{kimim@text@orange}
+\newcommand{\beameralertcolor}{kimim@text@red}
+\newcommand{\beamerblockbgcolor}{kimim@text@white}
+
+\ifthenelse{\boolean{darkmode}}{
+  \newcommand{\beamertextcolor}{kimim@text@white}%
+  \newcommand{\beamerbgcolor}{kimim@text@black}%
+  \newcommand{\beamerfootertextcolor}{kimim@text@whiter_gray}%
+}{%
+  \newcommand{\beamertextcolor}{kimim@text@black}%
+  \newcommand{\beamerbgcolor}{kimim@text@white}%
+  \newcommand{\beamerfootertextcolor}{kimim@text@gray}%
+}
+
+\setbeamercolor*{normal text}{fg=\beamertextcolor, bg=\beamerbgcolor}
+\setbeamercolor*{alerted text}{fg=\beameralertcolor, bg=\beamerbgcolor}
+\setbeamercolor*{footline}{fg=\beamerfootertextcolor, bg=\beamerbgcolor}
+\setbeamercolor*{headline}{fg=\beamerheadlinecolor, bg=\beamerbgcolor}
+\setbeamercolor*{frametitle}{fg=\beamertitlecolor, bg=\beamerbgcolor}
+
+\setbeamercolor*{author}{parent=normal text}
+\setbeamercolor*{date}{fg=\beamerfootertextcolor, bg=\beamerheadlinecolor}
+\setbeamercolor*{title}{parent=frametitle}
+\setbeamercolor*{section title}{parent=frametitle}
+
+\setbeamercolor*{section in toc}{parent=normal text}
+\setbeamercolor*{subsection in toc}{parent=normal text}
+\setbeamercolor*{subsubsection in toc}{parent=normal text}
+
+\setbeamercolor{block title}{fg=\beamerheadlinecolor,bg=\beamerbgcolor}
+\setbeamercolor{block body}{fg=\beamertextcolor,bg=\beamerblockbgcolor}
+\setbeamercolor{block title alerted}{fg=\beamerheadlinecolor,bg=\beamerbgcolor}
+\setbeamercolor{block body alerted}{fg=\beamertextcolor,bg=\beamerblockbgcolor}
+\setbeamercolor{block title example}{fg=\beamerheadlinecolor,bg=\beamerbgcolor}
+\setbeamercolor{block body example}{fg=\beamertextcolor,bg=\beamerblockbgcolor}
+
+\setbeamercolor*{enumerate item}{parent=normal text}
+\setbeamercolor*{enumerate subitem}{parent=normal text}
+\setbeamercolor*{enumerate subsubitem}{parent=normal text}
+
+\setbeamercolor*{itemize item}{parent=normal text}
+\setbeamercolor*{itemize subitem}{parent=normal text}
+\setbeamercolor*{itemize subsubitem}{parent=normal text}
+
+\setbeamercolor*{bibliography item}{parent=normal text}
+\setbeamercolor*{bibliography entry title}{parent=normal text}
+\setbeamercolor*{bibliography entry author}{parent=normal text}
+\setbeamercolor*{bibliography entry location}{parent=normal text}
+\setbeamercolor*{bibliography entry note}{parent=normal text}
+
+\setbeamercolor*{caption name}{parent=normal text}
+
+\mode<all>

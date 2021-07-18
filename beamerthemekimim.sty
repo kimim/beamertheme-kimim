@@ -1,0 +1,102 @@
+% A elegant LaTeX-Beamer theme for everyone to use.
+% Copyright (C) 2021 Kimi Ma
+
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+% This file is part of beamertheme-kimim.
+
+% If problems/bugs are found or enhancements are desired, please contact
+% me over: https://github.com/kimim/latex-beamer-kimim
+
+\ProvidesPackage{beamerthemekimim}[v2.0.0]
+
+%% Include SVG in PDF
+%% just set the inkscape bin path in PATH
+%% and set inkscapelatex=false, to scale the text together with the image
+%% see https://tex.stackexchange.com/questions/390804/how-to-scale-text-in-svg
+\RequirePackage{svg}
+\svgsetup{inkscapelatex=false}
+\makeatletter
+  \def\maxheight#1{\ifdim\Gin@nat@height>#1 #1\else\Gin@nat@height\fi}
+  \def\maxwidth#1{\ifdim\Gin@nat@width>#1 #1\else\Gin@nat@width\fi}
+\makeatother
+
+
+%% https://tex.stackexchange.com/questions/66519/make-each-frame-not-slide-appear-in-the-pdf-bookmarks-with-beamer
+\RequirePackage{bookmark}
+\makeatletter
+  % save the current definition of \beamer@@frametitle
+  \let\nobookmarkbeamer@@frametitle\beamer@@frametitle
+  % then patch it to do the bookmarks and/or TOC entries
+  % \apptocmd{\beamer@@frametitle}{%
+  \apptocmd{\beamer@@frametitle}{%
+  \only<1>{\bookmark[page=\the\c@page,level=3]{#1}}
+  }%
+  {\message{** patching of \string\beamer@@frametitle succeeded **}}%
+  {\message{** patching of \string\beamer@@frametitle failed **}}%
+
+  \pretocmd{\beamer@checknoslide}{%
+    % ensure the bookmark is not created if the slide is filtered out
+    \let\beamer@@frametitle\nobookmarkbeamer@@frametitle
+    }%
+    {\message{** patching of \string\beamer@checknoslide succeeded **}}%
+    {\errmessage{** patching of \string\beamer@checknoslide failed **}}%
+\makeatother
+
+\let\oldcolumns\columns
+\renewcommand\columns[1][t]{\oldcolumns[#1]}
+
+\let\oldappendix\appendix
+\renewcommand\appendix{
+  \oldappendix
+  \begin{frame}[plain,noframenumbering]{}
+    \centering
+    \logotitle
+    %%\includegraphics[width=0.3\linewidth]{beamer/header_logo}%
+  \end{frame}
+}
+
+\mode<presentation>
+\DeclareOptionBeamer{darkmode}{\PassOptionsToPackage{darkmode}{beamercolorthemekimim}}
+\DeclareOptionBeamer{showmaxslides}{\PassOptionsToPackage{showmaxslides}{beamerouterthemekimim}}
+\DeclareOptionBeamer{nofooterlogo}{\PassOptionsToPackage{nofooterlogo}{beamerouterthemekimim}}
+\DeclareOptionBeamer{nofooter}{\PassOptionsToPackage{nofooter}{beamerouterthemekimim}}
+\DeclareOptionBeamer{customfont}{\PassOptionsToPackage{customfont}{beamerfontthemekimim}}
+%\DeclareOptionBeamer{noto}{\PassOptionsToPackage{noto}{beamerfontthemekimim}}
+
+\ProcessOptionsBeamer
+
+% Settings
+\usefonttheme{kimim}
+\usecolortheme{kimim}
+\useoutertheme{kimim}
+\useinnertheme{kimim}
+
+\setbeamertemplate{navigation symbols}{}%
+\beamerdefaultoverlayspecification{}
+
+\def\maketitle{%
+	{%Set beamer template only works for the following frames.
+	% Would need a different way to support calling \maketitle in
+	% a frame environment
+		\setbeamertemplate{footline}{}%
+		\setbeamertemplate{frametitle}[largetitle]%
+
+		\begin{frame}[noframenumbering]%
+			\titlepage%
+		\end{frame}%
+	}
+}
+
+\mode<all>
