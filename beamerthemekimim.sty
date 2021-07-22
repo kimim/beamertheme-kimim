@@ -33,6 +33,23 @@
 \makeatother
 
 
+\RequirePackage{tikz}
+\newcommand{\drawlogo}[1]{
+  \begin{tikzpicture}
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (-60:#1cm);
+    \coordinate (C) at (240:#1cm);
+    \foreach \density in {20,30,...,80}{%
+      \draw[fill=\beamerheadlinecolor!\density] (A)--(B)--(C)--cycle;
+      \path
+      (A) coordinate (X)
+      -- (B) coordinate[pos=.15](A)
+      -- (C) coordinate[pos=.15](B)
+      -- (X) coordinate[pos=.15](C);
+    }
+  \end{tikzpicture}
+}
+
 %% https://tex.stackexchange.com/questions/66519/make-each-frame-not-slide-appear-in-the-pdf-bookmarks-with-beamer
 \RequirePackage{bookmark}
 \makeatletter
@@ -62,7 +79,8 @@
   \oldappendix
   \begin{frame}[plain,noframenumbering]{}
     \centering
-    \logotitle
+    \drawlogo{4}
+    %% \logotitle
     %%\includegraphics[width=0.3\linewidth]{beamer/header_logo}%
   \end{frame}
 }
