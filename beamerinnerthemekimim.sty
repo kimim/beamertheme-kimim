@@ -23,7 +23,10 @@
 
 \mode<presentation>
 
-\def\itemsymbol{\raisebox{0.3ex}{\small$\bullet$}}
+\def\itemsymbol{\raisebox{0.3ex}{\tiny{$\bullet$}}}
+\def\subitemsymbol{\raisebox{0.3ex}{\tiny{$\blacksquare$}}}
+\def\subsubitemsymbol{\raisebox{0.3ex}{\tiny{$\blacktriangleright$}}}
+
 \setlength\leftmargini{1em}
 \setlength\leftmarginii{1em}
 \setlength\leftmarginiii{1em}
@@ -44,11 +47,11 @@
 }
 
 \defbeamertemplate*{itemize subitem}{kimim}{%
-  \usebeamerfont*{itemize subitem}\itemsymbol
+  \usebeamerfont*{itemize subitem}\subitemsymbol
 }
 
 \defbeamertemplate*{itemize subsubitem}{kimim}{%
-  \usebeamerfont*{itemize subsubitem}\itemsymbol
+  \usebeamerfont*{itemize subsubitem}\subsubitemsymbol
 }
 
 \defbeamertemplate*{bibliography item}{kimim}{%
