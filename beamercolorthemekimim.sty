@@ -37,26 +37,25 @@
 \definecolor{kimim@text@blockbg}{HTML}{f5f5f5}
 \definecolor{kimim@text@orange}{HTML}{5577ff}
 
-\newcommand{\beamertitlecolor}{kimim@text@black}
-\newcommand{\beamerheadlinecolor}{kimim@text@orange}
-\newcommand{\beameralertcolor}{kimim@text@red}
-\newcommand{\beamerblockbgcolor}{kimim@text@white}
-
 \ifthenelse{\boolean{darkmode}}{
   \newcommand{\beamertextcolor}{kimim@text@white}%
   \newcommand{\beamerbgcolor}{kimim@text@black}%
   \newcommand{\beamerfootertextcolor}{kimim@text@whiter_gray}%
+  \newcommand{\beamerheadlinecolor}{kimim@text@orange}
+  \newcommand{\beameralertcolor}{kimim@text@red}
 }{%
   \newcommand{\beamertextcolor}{kimim@text@black}%
   \newcommand{\beamerbgcolor}{kimim@text@white}%
   \newcommand{\beamerfootertextcolor}{kimim@text@gray}%
+  \newcommand{\beamerheadlinecolor}{kimim@text@orange}
+  \newcommand{\beameralertcolor}{kimim@text@red}
 }
 
 \setbeamercolor*{normal text}{fg=\beamertextcolor, bg=\beamerbgcolor}
 \setbeamercolor*{alerted text}{fg=\beameralertcolor, bg=\beamerbgcolor}
 \setbeamercolor*{footline}{fg=\beamerfootertextcolor, bg=\beamerbgcolor}
 \setbeamercolor*{headline}{fg=\beamerheadlinecolor, bg=\beamerbgcolor}
-\setbeamercolor*{frametitle}{fg=\beamertitlecolor, bg=\beamerbgcolor}
+\setbeamercolor*{frametitle}{fg=\beamerheadlinecolor, bg=\beamerbgcolor}
 
 \setbeamercolor*{author}{parent=normal text}
 \setbeamercolor*{date}{fg=\beamerfootertextcolor, bg=\beamerheadlinecolor}

@@ -108,9 +108,17 @@
   \insertsectionnumber.\hspace*{1ex}\insertsection%
 }
 
+%% \AtBeginSection[]{
+%%   \frame[plain,noframenumbering]{\sectionpage}
+%% }
+
 \AtBeginSection[]{
-  \frame[plain,noframenumbering]{\sectionpage}
+  \frame[noframenumbering]{
+    \frametitle{Overview}
+    \tableofcontents[currentsection]
+  }
 }
+
 
 \defbeamertemplate*{section page}{kimim}[1][]
 {
