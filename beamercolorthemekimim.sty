@@ -31,24 +31,32 @@
 
 \definecolor{kimim@text@black}{RGB}{0,0,0}
 \definecolor{kimim@text@gray}{RGB}{113,113,113}
-\definecolor{kimim@text@whiter_gray}{RGB}{160,160,160}
+\definecolor{kimim@text@whitergray}{RGB}{160,160,160}
 \definecolor{kimim@text@red}{RGB}{255,0,15}
 \definecolor{kimim@text@white}{RGB}{255,255,255}
 \definecolor{kimim@text@blockbg}{HTML}{f5f5f5}
-\definecolor{kimim@text@orange}{HTML}{5577ff}
+\definecolor{kimim@text@kimimblue}{HTML}{5577ff}
+\definecolor{kimim@text@blue}{HTML}{4169e1}
+\definecolor{kimim@text@navy}{HTML}{000080}
 
 \ifthenelse{\boolean{darkmode}}{
   \newcommand{\beamertextcolor}{kimim@text@white}%
   \newcommand{\beamerbgcolor}{kimim@text@black}%
-  \newcommand{\beamerfootertextcolor}{kimim@text@whiter_gray}%
-  \newcommand{\beamerheadlinecolor}{kimim@text@orange}
+  \newcommand{\beamerfootertextcolor}{kimim@text@whitergray}%
+  \newcommand{\beamerheadlinecolor}{kimim@text@black}
+  \newcommand{\beamersubtitlecolor}{kimim@text@navy}
   \newcommand{\beameralertcolor}{kimim@text@red}
+  \newcommand{\beamerlinkcolor}{kimim@text@blue}
+  \newcommand{\beamerlogocolor}{kimim@text@kimimblue}
 }{%
   \newcommand{\beamertextcolor}{kimim@text@black}%
   \newcommand{\beamerbgcolor}{kimim@text@white}%
   \newcommand{\beamerfootertextcolor}{kimim@text@gray}%
-  \newcommand{\beamerheadlinecolor}{kimim@text@orange}
+  \newcommand{\beamerheadlinecolor}{kimim@text@black}
+  \newcommand{\beamersubtitlecolor}{kimim@text@navy}
   \newcommand{\beameralertcolor}{kimim@text@red}
+  \newcommand{\beamerlinkcolor}{kimim@text@blue}
+  \newcommand{\beamerlogocolor}{kimim@text@kimimblue}
 }
 
 \setbeamercolor*{normal text}{fg=\beamertextcolor, bg=\beamerbgcolor}
@@ -56,9 +64,10 @@
 \setbeamercolor*{footline}{fg=\beamerfootertextcolor, bg=\beamerbgcolor}
 \setbeamercolor*{headline}{fg=\beamerheadlinecolor, bg=\beamerbgcolor}
 \setbeamercolor*{frametitle}{fg=\beamerheadlinecolor, bg=\beamerbgcolor}
+\setbeamercolor*{subframetitle}{fg=\beamersubtitlecolor, bg=\beamerbgcolor}
 
-\setbeamercolor*{author}{parent=normal text}
-\setbeamercolor*{date}{fg=\beamerfootertextcolor, bg=\beamerheadlinecolor}
+\setbeamercolor*{author}{fg=\beamerfootertextcolor, bg=\beamerbgcolor}
+\setbeamercolor*{date}{parent=author}
 \setbeamercolor*{title}{parent=frametitle}
 \setbeamercolor*{section title}{parent=frametitle}
 

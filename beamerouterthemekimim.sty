@@ -103,16 +103,39 @@
 % after closing the relevant beamercolorbox
 
 \defbeamertemplate*{frametitle}{kimimtitle}{
-%%   \begin{beamercolorbox}[sep=0pt, wd=.95\paperwidth, left]{headline}
-%%     \rule{0.1in}{0.02in}
-%%   \end{beamercolorbox}
+  \vskip 4pt
   \begin{beamercolorbox}[sep=0ex, wd=.95\paperwidth, left]{frametitle}
-    \vskip 2pt
+    \vskip 0.5pt
     \usebeamerfont{frametitle}%
-    \insertframetitle%
-    \ifx\insertframesubtitle\@empty% if no framesubtitle, put nothing here
+    \ifbeamer@inappendix%
+        Appendix
     \else%
-        {\par\usebeamerfont{framesubtitle}\insertframesubtitle}%
+        \ifbeamer@noframenumbering%
+            Outline
+        \else
+            \ifx\insertsection\@empty% if section title is empty
+                \ifx\insertframetitle\@empty% if frametitle is empty
+                    Outline
+                \else%
+                    \insertframetitle% if frametitle is not empty
+                \fi%
+            \else%
+                \insertsection% if section title is not empty
+            \fi%
+        \fi%
+    \fi%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[sep=0ex, wd=.95\paperwidth, left]{subframetitle}
+    \ifbeamer@noframenumbering% Overview index page
+    \else%
+        \ifx\insertsection\@empty% Outline page
+            \ifx\insertframesubtitle\@empty%
+            \else% If there are any frame subtitle
+                \usebeamerfont{framesubtitle}\insertframesubtitle%
+            \fi%
+        \else
+            \usebeamerfont{framesubtitle}\insertframetitle%
+        \fi%
     \fi%
   \end{beamercolorbox}%
 }%

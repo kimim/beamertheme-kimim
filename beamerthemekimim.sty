@@ -32,6 +32,13 @@
   \def\maxwidth#1{\ifdim\Gin@nat@width>#1 #1\else\Gin@nat@width\fi}
 \makeatother
 
+\makeatletter
+  \def\verbatim{\small\@verbatim \frenchspacing\@vobeyspaces \@xverbatim}
+\makeatother
+
+%% \BeforeBeginEnvironment{minted}{}
+%% \AfterEndEnvironment{minted}{}
+
 
 \RequirePackage{tikz}
 \newcommand{\drawlogo}[1]{
@@ -40,7 +47,7 @@
     \coordinate (B) at (-60:#1cm);
     \coordinate (C) at (240:#1cm);
     \foreach \density in {20,30,...,80}{%
-      \draw[fill=\beamerheadlinecolor!\density] (A)--(B)--(C)--cycle;
+      \draw[fill=\beamerlogocolor!\density] (A)--(B)--(C)--cycle;
       \path
       (A) coordinate (X)
       -- (B) coordinate[pos=.15](A)
@@ -69,6 +76,7 @@
     }%
     {\message{** patching of \string\beamer@checknoslide succeeded **}}%
     {\errmessage{** patching of \string\beamer@checknoslide failed **}}%
+
 \makeatother
 
 \let\oldcolumns\columns
@@ -100,6 +108,8 @@
 \usecolortheme{kimim}
 \useoutertheme{kimim}
 \useinnertheme{kimim}
+\RequirePackage{hyperref}
+\hypersetup{colorlinks = true, urlcolor = \beamerlinkcolor, linkcolor = black, citecolor = \beamerlinkcolor}
 
 \setbeamertemplate{navigation symbols}{}%
 \beamerdefaultoverlayspecification{}

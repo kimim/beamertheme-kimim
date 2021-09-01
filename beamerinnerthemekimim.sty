@@ -43,15 +43,15 @@
 }
 
 \defbeamertemplate*{itemize item}{kimim}{%
-  \usebeamerfont*{itemize item}\itemsymbol
+  \usebeamerfont*{itemize/enumerate body}\itemsymbol
 }
 
 \defbeamertemplate*{itemize subitem}{kimim}{%
-  \usebeamerfont*{itemize subitem}\subitemsymbol
+  \usebeamerfont*{itemize/enumerate subbody}\subitemsymbol
 }
 
 \defbeamertemplate*{itemize subsubitem}{kimim}{%
-  \usebeamerfont*{itemize subsubitem}\subsubitemsymbol
+  \usebeamerfont*{itemize/enumerate subsubbody}\subsubitemsymbol
 }
 
 \defbeamertemplate*{bibliography item}{kimim}{%
@@ -75,32 +75,46 @@
 \defbeamertemplate*{title page}{kimim}[1][]
 {
   \usebeamerfont{title}
-  \vskip 160pt
+  \vskip 190pt
 %%   \begin{beamercolorbox}[sep=0pt, wd=.95\paperwidth, left]{headline}
 %%     \rule{0.1in}{0.02in}
 %%   \end{beamercolorbox}
-  \begin{beamercolorbox}[sep=0ex,wd=0.95\paperwidth,dp=1ex]{headline}
-    \parbox{\linewidth}{%
-      \begin{beamercolorbox}[wd=\textwidth]{title}%
-        \vskip 1pt
-        {\inserttitle}%
-      \end{beamercolorbox}
-      \vskip 3pt
-      \begin{beamercolorbox}[sep=0mm, wd=\textwidth]{author}%
-        \ifx\insertsubtitle\@empty%
-          \else%
-          {\usebeamerfont{subtitle}\insertsubtitle}\par%
-        \fi%
-        \vskip 3pt
-        \usebeamerfont{author}{\insertauthor},\hspace{5pt}%
-        \usebeamerfont{date}{\insertdate}%
-        \ifx\insertinstitute\@empty%
-          \else%
-          {\usebeamerfont{institute}\insertinstitute}%
-        \fi%
-      \end{beamercolorbox}%
-    }%
+  \begin{beamercolorbox}[wd=0.95\paperwidth,left]{title}
+    \begin{beamercolorbox}[wd=\textwidth]{title}%
+      \inserttitle%
+    \end{beamercolorbox}
+    \vskip -5pt
+    \begin{beamercolorbox}[wd=\textwidth]{title}%
+      \ifx\insertsubtitle\@empty%
+      \else%
+      \usebeamerfont{subtitle}\insertsubtitle%
+      \fi%
+    \end{beamercolorbox}%
   \end{beamercolorbox}
+
+  \begin{beamercolorbox}[wd=.95\paperwidth, ht=.06\paperheight]{title}%
+    \begin{beamercolorbox}[wd=.7\paperwidth]{title}%
+      \usebeamerfont{author}{\insertauthor}
+      \ifx\insertinstitute\@empty%
+      \else%
+      \usebeamerfont{institute}\insertinstitute%
+      \fi%
+      \vskip 6pt
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.25\paperwidth, right, ht=.06\paperheight]{title}
+      \vbox to .06\paperheight{%
+        \vfill%
+      }%
+    \end{beamercolorbox}%
+  \end{beamercolorbox}
+
+  \begin{beamercolorbox}[wd=.95\paperwidth, left]{footline}%
+    \usebeamerfont{footline}{
+      Document ID:
+      \hspace{20pt}Revision:
+      \hspace{10pt}Updated on: {\insertdate}}%
+      \vskip 14pt
+  \end{beamercolorbox}%
 }
 
 %% Template: Section Page
@@ -112,29 +126,11 @@
 %%   \frame[plain,noframenumbering]{\sectionpage}
 %% }
 
-\AtBeginSection[]{
+\AtBeginSection[]{%
   \frame[noframenumbering]{
-    \frametitle{Overview}
-    \tableofcontents[currentsection]
-  }
-}
-
-
-\defbeamertemplate*{section page}{kimim}[1][]
-{
-  \usebeamerfont{title}
-  \vskip 50pt
-%%   \begin{beamercolorbox}[sep=0ex, wd=.95\paperwidth, left]{headline}
-%%     \rule{0.1in}{0.02in}
-%%   \end{beamercolorbox}
-  \begin{beamercolorbox}[sep=0ex,wd=.95\paperwidth, left]{headline}
-    \parbox{\linewidth}{%
-      \begin{beamercolorbox}[wd=\textwidth]{section title}%
-        {\insertsection}%
-        \vskip 3pt
-      \end{beamercolorbox}
-    }%
-  \end{beamercolorbox}
-}
+    \frametitle{Overview}%
+    \tableofcontents[currentsection]%
+  }%
+}%
 
 \mode<all>
