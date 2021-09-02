@@ -5,6 +5,6 @@ Features:
 2. each frame has a thin progress bar, changing color according to page number
 3. appendix section is an empty frame with a large logo
 
-See example PDF with UML diagrams here: https://github.com/kimim/beamer-plantuml/blob/master/README.pdf
+See example PDF with UML diagrams here: https://github.com/kimim/orgmode-examples/blob/master/README.pdf
 
-Clone the full source files from here: https://github.com/kimim/beamer-plantuml
+Clone the full source files from here: https://github.com/kimim/orgmode-examples
