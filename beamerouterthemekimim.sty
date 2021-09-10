@@ -154,11 +154,12 @@
         { \usebeamercolor[\beamerheadlinecolor]{normal text}\ \hrule }}%
       \else%
       %% the \setlength's should be put under else, because \insertmainframenumber is 0 in appendix
-      \setlength{\myprogress@slot}{%
-        \linewidth * \ratio{1 pt}{\insertmainframenumber pt}%
-      }%
       \setlength{\myprogress@current}{%
-        \myprogress@slot * \insertframenumber
+        \ifnum \insertmainframenumber = 0
+        0\linewidth
+        \else
+        \linewidth * \ratio{1 pt}{\insertmainframenumber pt}%
+        \fi
       }%
       \setlength{\myprogress@completed}{%
         \myprogress@current - \myprogress@slot
