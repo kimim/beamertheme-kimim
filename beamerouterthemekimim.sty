@@ -146,18 +146,6 @@
   \begin{beamercolorbox}[sep=0pt, wd=\myfootbarmargin, ht=#1, dp=1ex]{footline}
   \end{beamercolorbox}%
   \begin{beamercolorbox}[sep=0pt, wd=\myfootbarlength, ht=#1, dp=1ex]{footline}
-    \setlength{\myprogress@slot}{%
-      \linewidth * \ratio{1 pt}{\insertmainframenumber pt}%
-    }%
-    \setlength{\myprogress@current}{%
-      \myprogress@slot * \insertframenumber
-    }%
-    \setlength{\myprogress@completed}{%
-      \myprogress@current - \myprogress@slot
-    }%
-    \setlength{\myprogress@remaining}{%
-      \linewidth - \myprogress@current
-    }%
     \hbox {
       % Don't ask me why I had to insert a space/character after \usebeamercolor
       % for it to have an effect on \hrule. Same goes for \color{white} \hrule
@@ -165,6 +153,19 @@
       \vbox{\hsize \linewidth
         { \usebeamercolor[\beamerheadlinecolor]{normal text}\ \hrule }}%
       \else%
+      %% the \setlength's should be put under else, because \insertmainframenumber is 0 in appendix
+      \setlength{\myprogress@slot}{%
+        \linewidth * \ratio{1 pt}{\insertmainframenumber pt}%
+      }%
+      \setlength{\myprogress@current}{%
+        \myprogress@slot * \insertframenumber
+      }%
+      \setlength{\myprogress@completed}{%
+        \myprogress@current - \myprogress@slot
+      }%
+      \setlength{\myprogress@remaining}{%
+        \linewidth - \myprogress@current
+      }%
       \vbox{\hsize \myprogress@completed
         { \usebeamercolor[\beamerfootertextcolor]{normal text}\ \hrule }}%
       \vbox{\hsize \myprogress@slot
