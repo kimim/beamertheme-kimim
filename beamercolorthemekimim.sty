@@ -42,6 +42,7 @@
 \ifthenelse{\boolean{darkmode}}{
   \newcommand{\beamertextcolor}{kimim@text@white}%
   \newcommand{\beamerbgcolor}{kimim@text@black}%
+  \newcommand{\beamerblockbgcolor}{kimim@text@blockbg}
   \newcommand{\beamerfootertextcolor}{kimim@text@whitergray}%
   \newcommand{\beamerheadlinecolor}{kimim@text@black}
   \newcommand{\beamersubtitlecolor}{kimim@text@navy}
@@ -51,6 +52,7 @@
 }{%
   \newcommand{\beamertextcolor}{kimim@text@black}%
   \newcommand{\beamerbgcolor}{kimim@text@white}%
+  \newcommand{\beamerblockbgcolor}{kimim@text@blockbg}
   \newcommand{\beamerfootertextcolor}{kimim@text@gray}%
   \newcommand{\beamerheadlinecolor}{kimim@text@black}
   \newcommand{\beamersubtitlecolor}{kimim@text@navy}
@@ -59,14 +61,14 @@
   \newcommand{\beamerlogocolor}{kimim@text@kimimblue}
 }
 
-\setbeamercolor*{normal text}{fg=\beamertextcolor, bg=\beamerbgcolor}
-\setbeamercolor*{alerted text}{fg=\beameralertcolor, bg=\beamerbgcolor}
-\setbeamercolor*{footline}{fg=\beamerfootertextcolor, bg=\beamerbgcolor}
-\setbeamercolor*{headline}{fg=\beamerheadlinecolor, bg=\beamerbgcolor}
-\setbeamercolor*{frametitle}{fg=\beamerheadlinecolor, bg=\beamerbgcolor}
-\setbeamercolor*{subframetitle}{fg=\beamersubtitlecolor, bg=\beamerbgcolor}
+\setbeamercolor*{normal text}{fg=\beamertextcolor}
+\setbeamercolor*{alerted text}{fg=\beameralertcolor}
+\setbeamercolor*{footline}{fg=\beamerfootertextcolor}
+\setbeamercolor*{headline}{fg=\beamerheadlinecolor}
+\setbeamercolor*{frametitle}{fg=\beamerheadlinecolor}
+\setbeamercolor*{subframetitle}{fg=\beamersubtitlecolor}
 
-\setbeamercolor*{author}{fg=\beamerfootertextcolor, bg=\beamerbgcolor}
+\setbeamercolor*{author}{fg=\beamerfootertextcolor}
 \setbeamercolor*{date}{parent=author}
 \setbeamercolor*{title}{parent=frametitle}
 \setbeamercolor*{section title}{parent=frametitle}
@@ -97,5 +99,6 @@
 \setbeamercolor*{bibliography entry note}{parent=normal text}
 
 \setbeamercolor*{caption name}{parent=normal text}
+\setbeamercolor{background canvas}{bg=}
 
 \mode<all>

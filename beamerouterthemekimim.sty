@@ -147,19 +147,25 @@
   \end{beamercolorbox}%
   \begin{beamercolorbox}[sep=0pt, wd=\myfootbarlength, ht=#1, dp=1ex]{footline}
     \hbox {
-      % Don't ask me why I had to insert a space/character after \usebeamercolor
-      % for it to have an effect on \hrule. Same goes for \color{white} \hrule
       \ifbeamer@inappendix%
       \vbox{\hsize \linewidth
         { \usebeamercolor[\beamerheadlinecolor]{normal text}\ \hrule }}%
       \else%
-      %% the \setlength's should be put under else, because \insertmainframenumber is 0 in appendix
-      \setlength{\myprogress@current}{%
-        \ifnum \insertmainframenumber = 0
-        0\linewidth
+      %% the \setlength's should be put under else,
+      %% because \insertmainframenumber is 0 in appendix
+      \setlength{\myprogress@slot}{%
+        \ifx\insertmainframenumber\@empty
+          0\linewidth
         \else
-        \linewidth * \ratio{1 pt}{\insertmainframenumber pt}%
+          \ifnum \insertmainframenumber = 0
+          0\linewidth
+          \else
+          \linewidth * \ratio{1 pt}{\insertmainframenumber pt}%
+          \fi
         \fi
+      }%
+      \setlength{\myprogress@current}{%
+        \myprogress@slot * \insertframenumber
       }%
       \setlength{\myprogress@completed}{%
         \myprogress@current - \myprogress@slot
@@ -170,7 +176,7 @@
       \vbox{\hsize \myprogress@completed
         { \usebeamercolor[\beamerfootertextcolor]{normal text}\ \hrule }}%
       \vbox{\hsize \myprogress@slot
-        { \usebeamercolor[\beamerheadlinecolor]{normal text}\ \hrule }}%
+        { \usebeamercolor[\beamerlogocolor]{normal text}\ \hrule }}%
       \vbox{\hsize \myprogress@remaining
         { \usebeamercolor[\beamerfootertextcolor]{normal text}\ \hrule }}%
       \fi%
@@ -178,7 +184,7 @@
     \leavevmode%
     #2%
   \end{beamercolorbox}%
-  \begin{beamercolorbox}[sep=0pt, wd=0.0225\paperwidth, dp=1ex, ht=#1]{footline}
+  \begin{beamercolorbox}[sep=0pt, wd=\myfootbarmargin, dp=1ex, ht=#1]{footline}
   \end{beamercolorbox}%
 }
 
