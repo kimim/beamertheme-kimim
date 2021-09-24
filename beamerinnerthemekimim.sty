@@ -65,6 +65,17 @@
   \insertcaption%
 }
 
+\setbeamertemplate{quotation begin}{
+  \vskip 5pt
+  \begin{beamercolorbox}[wd=\textwidth,center,shadow=true,rounded=true]{quotation}%
+  \vskip 5pt
+}
+
+\setbeamertemplate{quotation end}{
+  \vskip 5pt
+  \end{beamercolorbox}
+}
+
 \setbeamertemplate{background}{
   \ifnum\thepage=1%
   \drawlogo{6}%

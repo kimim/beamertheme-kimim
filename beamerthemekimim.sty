@@ -45,18 +45,12 @@
 
 \RequirePackage{tikz}
 \newcommand{\drawlogo}[1]{
-  \begin{tikzpicture}
-    \coordinate (A) at (0,0);
-    \coordinate (B) at (-60:#1cm);
-    \coordinate (C) at (240:#1cm);
-    \foreach \density in {20,30,...,80}{%
-      \draw[fill=\beamerlogocolor!\density] (A)--(B)--(C)--cycle;
-      \path
-      (A) coordinate (X)
-      -- (B) coordinate[pos=.15](A)
-      -- (C) coordinate[pos=.15](B)
-      -- (X) coordinate[pos=.15](C);
-    }
+  \begin{tikzpicture}[x=#1cm,y=#1cm]
+    \filldraw[\beamerlogocolor] (0,0) rectangle (-4,-2);
+    \filldraw[\beamerlogocolor,rotate=-30] (0,0) rectangle (1,-0.2);
+    \filldraw[\beamerlogocolor] (-4,-2) rectangle (-3,-3);
+    \filldraw[\beamerlogocolor] (0,-2) rectangle (-1,-3);
+    \filldraw[\beamerlogocolor] (-4,0) rectangle (-5.5,-1.5);
   \end{tikzpicture}
 }
 
@@ -90,7 +84,7 @@
   \oldappendix
   \begin{frame}[plain,noframenumbering]{}
     \centering
-    \drawlogo{4}
+    \drawlogo{1}
     %% \logotitle
     %%\includegraphics[width=0.3\linewidth]{beamer/header_logo}%
   \end{frame}
