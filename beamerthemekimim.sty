@@ -48,9 +48,21 @@
   \begin{tikzpicture}[x=#1cm,y=#1cm]
     \filldraw[\beamerlogocolor] (0,0) rectangle (-4,-2);
     \filldraw[\beamerlogocolor,rotate=-30] (0,0) rectangle (1,-0.2);
+    \filldraw[\beamerlogocolor] (-4,0) circle (0.2);
     \filldraw[\beamerlogocolor] (-4,-2) rectangle (-3,-3);
     \filldraw[\beamerlogocolor] (0,-2) rectangle (-1,-3);
     \filldraw[\beamerlogocolor] (-4,0) rectangle (-5.5,-1.5);
+  \end{tikzpicture}
+}
+
+\newcommand{\drawbg}{
+  \begin{tikzpicture}
+    \fill[left color=\beamerlogocolor,right color=white,shading angle=90] (0,0) rectangle (\paperwidth,-0.6\paperheight);
+    \begin{scope}[shift={(0.3\paperheight,-0.3\paperheight)}]
+      \fill[red!30!white,semitransparent]   ( 90:0.06\paperheight) circle (0.1\paperheight);
+      \fill[green!30!white,semitransparent] (210:0.06\paperheight) circle (0.1\paperheight);
+      \fill[blue!30!white,semitransparent]  (330:0.06\paperheight) circle (0.1\paperheight);
+    \end{scope}
   \end{tikzpicture}
 }
 
@@ -84,9 +96,7 @@
   \oldappendix
   \begin{frame}[plain,noframenumbering]{}
     \centering
-    \drawlogo{1}
-    %% \logotitle
-    %%\includegraphics[width=0.3\linewidth]{beamer/header_logo}%
+    \drawlogo{0.5}
   \end{frame}
 }
 

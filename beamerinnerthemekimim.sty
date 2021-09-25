@@ -67,7 +67,7 @@
 
 \setbeamertemplate{quotation begin}{
   \vskip 5pt
-  \begin{beamercolorbox}[wd=\textwidth,center,shadow=true,rounded=true]{quotation}%
+  \begin{beamercolorbox}[wd=\textwidth,center,rounded=true]{quotation}%
   \vskip 5pt
 }
 
@@ -78,7 +78,7 @@
 
 \setbeamertemplate{background}{
   \ifnum\thepage=1%
-  \drawlogo{6}%
+  \drawbg
   \fi%
 }
 
@@ -87,9 +87,6 @@
 {
   \usebeamerfont{title}
   \vskip 190pt
-%%   \begin{beamercolorbox}[sep=0pt, wd=.95\paperwidth, left]{headline}
-%%     \rule{0.1in}{0.02in}
-%%   \end{beamercolorbox}
   \begin{beamercolorbox}[wd=0.95\paperwidth,left]{title}
     \begin{beamercolorbox}[wd=\textwidth]{title}%
       \inserttitle%
@@ -115,6 +112,7 @@
     \begin{beamercolorbox}[wd=.25\paperwidth, right, ht=.06\paperheight]{title}
       \vbox to .06\paperheight{%
         \vfill%
+        \drawlogo{0.15}%
       }%
     \end{beamercolorbox}%
   \end{beamercolorbox}
