@@ -65,6 +65,17 @@
   \insertcaption%
 }
 
+\setbeamertemplate{quote begin}{
+  \vskip 5pt
+  \begin{beamercolorbox}[wd=\textwidth,center,rounded=true]{quotation}%
+  \vskip 5pt
+}
+
+\setbeamertemplate{quote end}{
+  \vskip 5pt
+  \end{beamercolorbox}
+}
+
 \setbeamertemplate{quotation begin}{
   \vskip 5pt
   \begin{beamercolorbox}[wd=\textwidth,center,rounded=true]{quotation}%
@@ -137,7 +148,7 @@
 
 \AtBeginSection[]{%
   \frame[noframenumbering]{
-    \frametitle{Overview}%
+    \frametitle{\inserttitle}%
     \tableofcontents[currentsection]%
   }%
 }%

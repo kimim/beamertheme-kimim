@@ -75,18 +75,16 @@
 \renewcommand\Large{\fontsize{12pt}{14pt}\selectfont}
 \renewcommand\LARGE{\fontsize{14pt}{20pt}\selectfont}
 
-\setbeamerfont{normal text}{family=\sffamily, size=\normalsize, series=\mdseries}
-%%\setbeamerfont{alerted text}{parent=normal text}
+\setbeamerfont{normal text}{size=\normalsize}
 
-\setbeamerfont{structure}{parent=normal text}
-
-\setbeamerfont{all titles}{parent=normal text}
+\setbeamerfont{all titles}{family=\sffamily, series=\mdseries}
 \setbeamerfont{presentation title}{parent=all titles, size=\LARGE, series=\bfseries}
 \setbeamerfont{subtitle}{parent=all titles, shape=\upshape, size=\large}
 \setbeamerfont{frametitle}{parent=all titles, size=\Large, series=\bfseries}
 \setbeamerfont{framesubtitle}{parent=all titles, size=\normalsize}
 
-\setbeamerfont{footline}{parent=structure,size=\footnotesize}
+\setbeamerfont{structure}{parent=normal text}
+\setbeamerfont{footline}{series=\mdseries, size=\footnotesize}
 \setbeamerfont{title in head/foot}{parent=footline, series=\bfseries}
 \setbeamerfont{author in head/foot}{parent=footline}
 
@@ -94,72 +92,34 @@
 \setbeamerfont{subsection in toc}{parent=section in toc}
 \setbeamerfont{subsubsection in toc}{parent=subsection in toc}
 
-\setbeamerfont{block title}{parent=normal text, size=\normalsize}
-\setbeamerfont{block body}{parent=normal text, size=\small}
-\setbeamerfont{block title alerted}{parent=normal text, size=\normalsize}
-\setbeamerfont{block body alerted}{parent=normal text, size=\small}
-\setbeamerfont{block title example}{parent=normal text, size=\normalsize}
-\setbeamerfont{block body example}{parent=normal text, size=\small}
-\setbeamerfont{theorem title}{parent=normal text, size=\normalsize}
-\setbeamerfont{theorem body}{parent=normal text, size=\small}
-\setbeamerfont{example title}{parent=normal text, size=\normalsize}
-\setbeamerfont{example body}{parent=normal text, size=\small}
-\setbeamerfont{proof title}{parent=normal text, size=\normalsize}
-\setbeamerfont{proof body}{parent=normal text, size=\small}
+\setbeamerfont{block title}{size=\normalsize, series=\bfseries}
+\setbeamerfont{block body}{size=\small}
+\setbeamerfont{block title alerted}{parent=block title, size=\normalsize}
+\setbeamerfont{block body alerted}{size=\small}
+\setbeamerfont{block title example}{parent=block title, size=\normalsize}
+\setbeamerfont{block body example}{size=\small}
+\setbeamerfont{theorem title}{parent=block title, size=\normalsize}
+\setbeamerfont{theorem body}{size=\small}
+\setbeamerfont{example title}{parent=block title, size=\normalsize}
+\setbeamerfont{example body}{size=\small}
+\setbeamerfont{proof title}{parent=block title, size=\normalsize}
+\setbeamerfont{proof body}{size=\small}
 
-\setbeamerfont{title}{parent=normal text, size=\LARGE, series=\bfseries}
-\setbeamerfont{author}{parent=normal text, size=\small}
-\setbeamerfont{institute}{parent=normal text, size=\small}
-\setbeamerfont{date}{parent=normal text, size=\small}
+\setbeamerfont{title}{size=\LARGE, series=\bfseries}
+\setbeamerfont{author}{series=\mdseries, size=\small}
+\setbeamerfont{institute}{series=\mdseries, size=\small}
+\setbeamerfont{date}{series=\mdseries, size=\small}
 
-\setbeamerfont{caption}{parent=normal text, size=\small}
-\setbeamerfont{caption name}{series=normal text, size=\small}
+\setbeamerfont{caption}{size=\small}
+\setbeamerfont{caption name}{size=\small}
 
-\setbeamerfont{itemize/enumerate body}{size=\normalsize}
+\setbeamerfont{itemize/enumerate body}{size=\small}
+\setbeamerfont{itemize/enumerate body alerted}{size=\small}
 \setbeamerfont{itemize/enumerate subbody}{size=\small}
 \setbeamerfont{itemize/enumerate subsubbody}{size=\small}
 
-\AtBeginEnvironment{block}{%
-  \setbeamerfont{itemize/enumerate body}{parent=normal text, size=\small}
-  \setbeamerfont{itemize/enumerate body alerted}{parent=normal text, size=\small}
-  \setbeamerfont{itemize/enumerate subbody}{parent=itemize/enumerate body}
-  \setbeamerfont{itemize/enumerate subsubbody}{parent=itemize/enumerate subbody}
-}
-
-\AtBeginEnvironment{alertblock}{%
-  \setbeamerfont{itemize/enumerate body}{parent=normal text, size=\small}
-  \setbeamerfont{itemize/enumerate body alerted}{parent=normal text, size=\small}
-  \setbeamerfont{itemize/enumerate subbody}{parent=itemize/enumerate body}
-  \setbeamerfont{itemize/enumerate subsubbody}{parent=itemize/enumerate subbody}
-}
-
-\AtBeginEnvironment{theorem}{%
-  \setbeamerfont{itemize/enumerate body}{parent=normal text, size=\small}
-  \setbeamerfont{itemize/enumerate body alerted}{parent=normal text, size=\small}
-  \setbeamerfont{itemize/enumerate subbody}{parent=itemize/enumerate body}
-  \setbeamerfont{itemize/enumerate subsubbody}{parent=itemize/enumerate subbody}
-}
-
-\AtBeginEnvironment{example}{%
-  \setbeamerfont{itemize/enumerate body}{parent=normal text, size=\small}
-  \setbeamerfont{itemize/enumerate body alerted}{parent=normal text, size=\small}
-  \setbeamerfont{itemize/enumerate subbody}{parent=itemize/enumerate body}
-  \setbeamerfont{itemize/enumerate subsubbody}{parent=itemize/enumerate subbody}
-}
-
-\AtBeginEnvironment{proof}{%
-  \setbeamerfont{itemize/enumerate body}{parent=normal text, size=\small}
-  \setbeamerfont{itemize/enumerate body alerted}{parent=normal text, size=\small}
-  \setbeamerfont{itemize/enumerate subbody}{parent=itemize/enumerate body}
-  \setbeamerfont{itemize/enumerate subsubbody}{parent=itemize/enumerate subbody}
-}
-
 \AtBeginEnvironment{columns}{%
-  \setbeamerfont{normal text}{family=\sffamily, size=\small, series=\mdseries}
-  \setbeamerfont{itemize/enumerate body}{parent=normal text, size=\small}
-  \setbeamerfont{itemize/enumerate body alerted}{parent=normal text, size=\small}
-  \setbeamerfont{itemize/enumerate subbody}{parent=itemize/enumerate body}
-  \setbeamerfont{itemize/enumerate subsubbody}{parent=itemize/enumerate subbody}
+  \setbeamerfont{normal text}{size=\small}
 }
 
 \mode<all>

@@ -30,7 +30,7 @@
 \mode<presentation>
 
 \newboolean{showmaxslides}
-\setboolean{showmaxslides}{false}
+\setboolean{showmaxslides}{true}
 \newboolean{nofooterlogo}
 \setboolean{nofooterlogo}{false}
 
@@ -78,9 +78,9 @@
 }
 
 \newlength{\myleftmargin}
-\setlength{\myleftmargin}{.1\paperwidth}
+\setlength{\myleftmargin}{.05\paperwidth}
 \newlength{\myrightmargin}
-\setlength{\myrightmargin}{.1\paperwidth}
+\setlength{\myrightmargin}{.05\paperwidth}
 \newlength{\mytextlength}
 \setlength{\mytextlength}{\paperwidth - \myleftmargin - \myrightmargin}
 \newlength{\myfooterheight}
@@ -111,11 +111,11 @@
         Appendix
     \else%
         \ifbeamer@noframenumbering%
-            Outline
+            \inserttitle
         \else
             \ifx\insertsection\@empty% if section title is empty
                 \ifx\insertframetitle\@empty% if frametitle is empty
-                    Outline
+                    \inserttitle
                 \else%
                     \insertframetitle% if frametitle is not empty
                 \fi%
