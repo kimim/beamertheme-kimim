@@ -108,10 +108,10 @@
     \vskip 0.5pt
     \usebeamerfont{frametitle}%
     \ifbeamer@inappendix%
-        Appendix
+        \appendixname
     \else%
         \ifbeamer@noframenumbering%
-            \inserttitle
+            \inserttitle~-~\contentsname
         \else
             \ifx\insertsection\@empty% if section title is empty
                 \ifx\insertframetitle\@empty% if frametitle is empty

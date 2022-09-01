@@ -23,9 +23,9 @@
 
 \mode<presentation>
 
-\def\itemsymbol{\raisebox{0.3ex}{\tiny{$\bullet$}}}
-\def\subitemsymbol{\raisebox{0.3ex}{\tiny{$\blacksquare$}}}
-\def\subsubitemsymbol{\raisebox{0.3ex}{\tiny{$\blacktriangleright$}}}
+\def\itemsymbol{\raisebox{0.3ex}{$\bullet$}}
+\def\subitemsymbol{\raisebox{0.3ex}{$\triangleright$}}
+\def\subsubitemsymbol{\raisebox{0.3ex}{$\textborn$}}
 
 \setlength\leftmargini{1em}
 \setlength\leftmarginii{1em}
@@ -148,8 +148,10 @@
 
 \AtBeginSection[]{%
   \frame[noframenumbering]{
-    \frametitle{\inserttitle}%
-    \tableofcontents[currentsection]%
+    \frametitle{\inserttitle~-~\contentsname}%
+    \begin{minipage}{\textwidth}
+      \tableofcontents[currentsection]%
+    \end{minipage}
   }%
 }%
 
