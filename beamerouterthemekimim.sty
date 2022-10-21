@@ -147,39 +147,42 @@
   \end{beamercolorbox}%
   \begin{beamercolorbox}[sep=0pt, wd=\myfootbarlength, ht=#1, dp=1ex]{footline}
     \hbox {
-      \ifbeamer@inappendix%
+      %% \ifbeamer@inappendix%
+      %% \vbox{\hsize \linewidth
+      %%   { \usebeamercolor[\beamerheadlinecolor]{normal text}\ \hrule }}%
+      %% \else%
+      %% %% the \setlength's should be put under else,
+      %% %% because \insertmainframenumber is 0 in appendix
+      %% \setlength{\myprogress@slot}{%
+      %%   \ifx\insertmainframenumber\@empty
+      %%     0\linewidth
+      %%   \else
+      %%     \ifnum \insertmainframenumber = 0
+      %%     0\linewidth
+      %%     \else
+      %%     \linewidth * \ratio{1 pt}{\insertmainframenumber pt}%
+      %%     \fi
+      %%   \fi
+      %% }%
+      %% \setlength{\myprogress@current}{%
+      %%   \myprogress@slot * \insertframenumber
+      %% }%
+      %% \setlength{\myprogress@completed}{%
+      %%   \myprogress@current - \myprogress@slot
+      %% }%
+      %% \setlength{\myprogress@remaining}{%
+      %%   \linewidth - \myprogress@current
+      %% }%
+      %% \vbox{\hsize \myprogress@completed
+      %%   { \usebeamercolor[\beamerfootertextcolor]{normal text}\ \hrule }}%
+      %% \vbox{\hsize \myprogress@slot
+      %%   { \usebeamercolor[\beamerlogocolor]{normal text}\ \hrule }}%
+      %% \vbox{\hsize \myprogress@remaining
+      %%   { \usebeamercolor[\beamerfootertextcolor]{normal text}\ \hrule }}%
+      %% \fi%
+
       \vbox{\hsize \linewidth
         { \usebeamercolor[\beamerheadlinecolor]{normal text}\ \hrule }}%
-      \else%
-      %% the \setlength's should be put under else,
-      %% because \insertmainframenumber is 0 in appendix
-      \setlength{\myprogress@slot}{%
-        \ifx\insertmainframenumber\@empty
-          0\linewidth
-        \else
-          \ifnum \insertmainframenumber = 0
-          0\linewidth
-          \else
-          \linewidth * \ratio{1 pt}{\insertmainframenumber pt}%
-          \fi
-        \fi
-      }%
-      \setlength{\myprogress@current}{%
-        \myprogress@slot * \insertframenumber
-      }%
-      \setlength{\myprogress@completed}{%
-        \myprogress@current - \myprogress@slot
-      }%
-      \setlength{\myprogress@remaining}{%
-        \linewidth - \myprogress@current
-      }%
-      \vbox{\hsize \myprogress@completed
-        { \usebeamercolor[\beamerfootertextcolor]{normal text}\ \hrule }}%
-      \vbox{\hsize \myprogress@slot
-        { \usebeamercolor[\beamerlogocolor]{normal text}\ \hrule }}%
-      \vbox{\hsize \myprogress@remaining
-        { \usebeamercolor[\beamerfootertextcolor]{normal text}\ \hrule }}%
-      \fi%
     }
     \leavevmode%
     #2%
