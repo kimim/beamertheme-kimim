@@ -20,12 +20,15 @@
 % me over: https://github.com/kimim/beamertheme-kimim
 
 \ProvidesPackage{beamerinnerthemekimim}[v2.0.0]
+\RequirePackage{ifthen}
 
 \mode<presentation>
 
-\def\itemsymbol{\raisebox{0.3ex}{$\bullet$}}
+\ProcessOptionsBeamer
+
+\def\itemsymbol{\raisebox{0.3ex}{$\circ$}}
 \def\subitemsymbol{\raisebox{0.3ex}{$\triangleright$}}
-\def\subsubitemsymbol{\raisebox{0.3ex}{$\textborn$}}
+\def\subsubitemsymbol{\raisebox{0.3ex}{$\lozenge$}}
 
 \setlength\leftmargini{1em}
 \setlength\leftmarginii{1em}
@@ -103,7 +106,7 @@
       \inserttitle%
     \end{beamercolorbox}
     \vskip -5pt
-    \begin{beamercolorbox}[wd=\textwidth]{title}%
+    \begin{beamercolorbox}[wd=\textwidth]{subtitle}%
       \ifx\insertsubtitle\@empty%
       \else%
       \usebeamerfont{subtitle}\insertsubtitle%
@@ -111,8 +114,8 @@
     \end{beamercolorbox}%
   \end{beamercolorbox}
 
-  \begin{beamercolorbox}[wd=.95\paperwidth, ht=.06\paperheight]{title}%
-    \begin{beamercolorbox}[wd=.7\paperwidth]{title}%
+  \begin{beamercolorbox}[wd=.95\paperwidth, ht=.06\paperheight]{author}%
+    \begin{beamercolorbox}[wd=.7\paperwidth]{author}%
       \usebeamerfont{author}{\insertauthor}
       \ifx\insertinstitute\@empty%
       \else%
@@ -123,7 +126,11 @@
     \begin{beamercolorbox}[wd=.25\paperwidth, right, ht=.06\paperheight]{title}
       \vbox to .06\paperheight{%
         \vfill%
-        \drawlogo{0.15}%
+          \ifthenelse{\boolean{customlogo}}{
+            \insertlogoimage{0.15}
+          }{
+            \drawlogo{0.15}%
+          }
       }%
     \end{beamercolorbox}%
   \end{beamercolorbox}
@@ -142,10 +149,6 @@
   \insertsectionnumber.\hspace*{1ex}\insertsection%
 }
 
-%% \AtBeginSection[]{
-%%   \frame[plain,noframenumbering]{\sectionpage}
-%% }
-
 \AtBeginSection[]{%
   \frame[noframenumbering]{
     \frametitle{\inserttitle~-~\contentsname}%
@@ -155,4 +158,16 @@
   }%
 }%
 
+\let\oldappendix\appendix
+\renewcommand\appendix{
+  \oldappendix
+  \begin{frame}[plain,noframenumbering]
+    \centering
+    \ifthenelse{\boolean{customlogo}}{
+      \insertlogoimage{0.5}
+    }{
+      \drawlogo{0.5}%
+    }
+  \end{frame}
+}
 \mode<all>

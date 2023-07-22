@@ -29,7 +29,7 @@
 \DeclareOptionBeamer{darkmode}{\setboolean{darkmode}{true}}
 \ProcessOptionsBeamer
 
-\definecolor{kimim@text@black}{RGB}{0,0,0}
+\definecolor{kimim@text@black}{RGB}{9,9,9}
 \definecolor{kimim@text@gray}{RGB}{113,113,113}
 \definecolor{kimim@text@whitergray}{RGB}{160,160,160}
 \definecolor{kimim@text@red}{RGB}{255,0,15}
@@ -43,8 +43,9 @@
   \newcommand{\beamertextcolor}{kimim@text@white}%
   \newcommand{\beamerbgcolor}{kimim@text@black}%
   \newcommand{\beamerblockbgcolor}{kimim@text@blockbg}
+  \newcommand{\beamerfooterlinecolor}{kimim@text@gray}%
   \newcommand{\beamerfootertextcolor}{kimim@text@whitergray}%
-  \newcommand{\beamerheadlinecolor}{kimim@text@black}
+  \newcommand{\beamerheadlinecolor}{kimim@text@white}
   \newcommand{\beamersubtitlecolor}{kimim@text@navy}
   \newcommand{\beameralertcolor}{kimim@text@red}
   \newcommand{\beamerlinkcolor}{kimim@text@blue}
@@ -53,9 +54,10 @@
   \newcommand{\beamertextcolor}{kimim@text@black}%
   \newcommand{\beamerbgcolor}{kimim@text@white}%
   \newcommand{\beamerblockbgcolor}{kimim@text@blockbg}
+  \newcommand{\beamerfooterlinecolor}{kimim@text@whitergray}%
   \newcommand{\beamerfootertextcolor}{kimim@text@gray}%
   \newcommand{\beamerheadlinecolor}{kimim@text@black}
-  \newcommand{\beamersubtitlecolor}{kimim@text@navy}
+  \newcommand{\beamersubtitlecolor}{kimim@text@blue}
   \newcommand{\beameralertcolor}{kimim@text@red}
   \newcommand{\beamerlinkcolor}{kimim@text@blue}
   \newcommand{\beamerlogocolor}{kimim@text@kimimblue}
@@ -68,12 +70,13 @@
 \setbeamercolor*{frametitle}{fg=\beamerheadlinecolor}
 \setbeamercolor*{subframetitle}{fg=\beamersubtitlecolor}
 
-\setbeamercolor*{author}{fg=\beamerfootertextcolor}
-\setbeamercolor*{date}{parent=author}
 \setbeamercolor*{title}{parent=frametitle}
-\setbeamercolor*{section title}{parent=frametitle}
+\setbeamercolor*{subtitle}{parent=normal text}
+\setbeamercolor*{author}{parent=normal text}
+\setbeamercolor*{date}{parent=author}
 
-\setbeamercolor*{section in toc}{parent=normal text}
+\setbeamercolor*{section title}{parent=frametitle}
+\setbeamercolor*{section in toc}{parent=frametitle}
 \setbeamercolor*{subsection in toc}{parent=normal text}
 \setbeamercolor*{subsubsection in toc}{parent=normal text}
 
@@ -101,6 +104,6 @@
 \setbeamercolor*{bibliography entry note}{parent=normal text}
 
 \setbeamercolor*{caption name}{parent=normal text}
-\setbeamercolor{background canvas}{bg=}
+\setbeamercolor{background canvas}{bg=\beamerbgcolor}
 
 \mode<all>
