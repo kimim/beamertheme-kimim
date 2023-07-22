@@ -44,10 +44,6 @@
 \DeclareOptionBeamer{customlogo}{\setboolean{customlogo}{true}}
 \ProcessOptionsBeamer
 
-% invertcolor is already processed in colortheme
-\newcommand{\logopath}{beamer/logo}
-\newcommand{\insertlogoimage}[1]{\includesvg[width=#1\linewidth]{\logopath}}
-
 \newcommand{\showpagenum}{%
   \insertframenumber\ifthenelse{\boolean{showmaxslides}}{%
     /\inserttotalframenumber%
@@ -78,6 +74,10 @@
 \setbeamersize{text margin left=\myleftmargin, text margin right=\myrightmargin}
 % This cannot be an environment because I need to access the height parameter
 % after closing the relevant beamercolorbox
+
+\newcommand{\logopath}{beamer/logo}
+\newcommand{\insertlogoimage}[1]{\includesvg[width=#1\myfooterheight]{\logopath}}
+
 
 \defbeamertemplate*{frametitle}{kimimtitle}{
   \vskip 4pt
@@ -157,7 +157,7 @@
     \today $\quad$ $~~$\showpagenum
   }{
     \ifthenelse{\boolean{customlogo}}{
-      \insertlogoimage{0.1}
+      \insertlogoimage{2}
     }{
       \drawlogo{0.1}%
     }
