@@ -29,8 +29,10 @@
 
 \mode<presentation>
 
-\newboolean{showmaxslides}
-\setboolean{showmaxslides}{true}
+\newboolean{nomaxslides}
+\setboolean{nomaxslides}{false}
+\newboolean{noframetitle}
+\setboolean{noframetitle}{false}
 \newboolean{nofooterlogo}
 \setboolean{nofooterlogo}{false}
 \newboolean{nofooter}
@@ -38,16 +40,17 @@
 \newboolean{customlogo}
 \setboolean{customlogo}{false}
 
-\DeclareOptionBeamer{showmaxslides}{\setboolean{showmaxslides}{true}}
+\DeclareOptionBeamer{nomaxslides}{\setboolean{nomaxslides}{true}}
+\DeclareOptionBeamer{noframetitle}{\setboolean{noframetitle}{true}}
 \DeclareOptionBeamer{nofooterlogo}{\setboolean{nofooterlogo}{true}}
 \DeclareOptionBeamer{nofooter}{\setboolean{nofooter}{true}}
 \DeclareOptionBeamer{customlogo}{\setboolean{customlogo}{true}}
 \ProcessOptionsBeamer
 
 \newcommand{\showpagenum}{%
-  \insertframenumber\ifthenelse{\boolean{showmaxslides}}{%
-    /\inserttotalframenumber%
-  }{}%
+  \insertframenumber\ifthenelse{\boolean{nomaxslides}}{%
+  }{/\inserttotalframenumber%
+  }%
 }
 
 \newlength{\myleftmargin}
@@ -84,39 +87,44 @@
   \begin{beamercolorbox}[sep=0ex, wd=.95\paperwidth, left]{frametitle}
     \vskip 0.5pt
     \usebeamerfont{frametitle}%
-    \ifbeamer@inappendix%
-        \appendixname
-    \else%
-        \ifbeamer@noframenumbering%
-            \inserttitle~-~\contentsname
-        \else
-            \ifx\insertsection\@empty% if section title is empty
-                \ifx\insertframetitle\@empty% if frametitle is empty
-                    \inserttitle
-                \else%
-                    \insertframetitle% if frametitle is not empty
-                \fi%
-            \else%
-                \insertsection% if section title is not empty
-            \fi%
-        \fi%
-    \fi%
+    \ifthenelse{\boolean{noframetitle}}{%
+    }{
+      \ifbeamer@inappendix%
+          \appendixname%
+      \else%
+          \ifbeamer@noframenumbering%
+              \inserttitle~-~\contentsname
+          \else
+              \ifx\insertsection\@empty% if section title is empty
+                  \ifx\insertframetitle\@empty% if frametitle is empty
+                      \inserttitle
+                  \else%
+                      \insertframetitle% if frametitle is not empty
+                  \fi%
+              \else%
+                  \insertsection% if section title is not empty
+              \fi%
+          \fi%
+      \fi%
+    }
   \end{beamercolorbox}%
   \begin{beamercolorbox}[sep=0ex, wd=.95\paperwidth, left]{subframetitle}
-    \ifbeamer@noframenumbering% Overview index page
-    \else%
-        \ifx\insertsection\@empty% Outline page
-            \ifx\insertframesubtitle\@empty%
-            \else% If there are any frame subtitle
-                \usebeamerfont{framesubtitle}\insertframesubtitle%
-            \fi%
-        \else
-            \usebeamerfont{framesubtitle}\insertframetitle%
-        \fi%
-    \fi%
+    \ifthenelse{\boolean{noframetitle}}{%
+    }{
+      \ifbeamer@noframenumbering% Overview index page
+      \else%
+          \ifx\insertsection\@empty% Outline page
+              \ifx\insertframesubtitle\@empty%
+              \else% If there are any frame subtitle
+                  \usebeamerfont{framesubtitle}\insertframesubtitle%
+              \fi%
+          \else%
+              \usebeamerfont{framesubtitle}\insertframetitle%
+          \fi%
+      \fi%
+    }
   \end{beamercolorbox}%
 }%
-
 
 \newcommand{\basicfooter}[3]{%
   \leavevmode
@@ -149,16 +157,16 @@
   \end{beamercolorbox}%
 }
 
-
 \defbeamertemplate*{footline}{kimimfooterdefault}{%
   \basicfooter{%
     \myfooterheight
   }{%
-    \today $\quad$ $~~$\showpagenum
-  }{
-    \ifthenelse{\boolean{customlogo}}{
+    %\today $\quad$ $~~$
+    \showpagenum
+  }{%
+    \ifthenelse{\boolean{customlogo}}{%
       \insertlogoimage{2}
-    }{
+    }{%
       \drawlogo{0.1}%
     }
   }
@@ -168,18 +176,19 @@
   \basicfooter{%
     \myfooterheight
   }{%
-    \today $\quad$ $~~$\showpagenum
+    %\today $\quad$ $~~$
+    \showpagenum
   }{}
 }
 
 \defbeamertemplate{footline}{kimimfooterdisable}{}
 
-\ifthenelse{\boolean{nofooter}}{
-  \setbeamertemplate{footline}[kimimfooterdisable]
+\ifthenelse{\boolean{nofooterlogo}}{%
+  \setbeamertemplate{footline}[kimimfooternologo]
 }{}
 
-\ifthenelse{\boolean{nofooterlogo}}{
-  \setbeamertemplate{footline}[kimimfooternologo]
+\ifthenelse{\boolean{nofooter}}{%
+  \setbeamertemplate{footline}[kimimfooterdisable]
 }{}
 
 \mode<all>
