@@ -61,14 +61,6 @@
 \setlength{\mytextlength}{\paperwidth - \myleftmargin - \myrightmargin}
 \newlength{\myfooterheight}
 \setlength{\myfooterheight}{.08\paperheight}
-\newlength{\myprogress@slot}
-\setlength{\myprogress@slot}{.0225\paperwidth}
-\newlength{\myprogress@current}
-\setlength{\myprogress@current}{.0225\paperwidth}
-\newlength{\myprogress@completed}
-\setlength{\myprogress@completed}{.0225\paperwidth}
-\newlength{\myprogress@remaining}
-\setlength{\myprogress@remaining}{.0225\paperwidth}
 \newlength{\myfootbarmargin}
 \setlength{\myfootbarmargin}{.0225\paperwidth}
 \newlength{\myfootbarlength}
@@ -81,11 +73,9 @@
 \newcommand{\logopath}{beamer/logo}
 \newcommand{\insertlogoimage}[1]{\includesvg[width=#1\myfooterheight]{\logopath}}
 
-
 \defbeamertemplate*{frametitle}{kimimtitle}{
-  \vskip 4pt
+  \vskip 3pt
   \begin{beamercolorbox}[sep=0ex, wd=.95\paperwidth, left]{frametitle}
-    \vskip 0.5pt
     \usebeamerfont{frametitle}%
     \ifthenelse{\boolean{noframetitle}}{%
     }{

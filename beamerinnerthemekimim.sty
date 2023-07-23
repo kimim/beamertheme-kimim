@@ -68,6 +68,17 @@
   \insertcaption%
 }
 
+%create template for block without title
+% https://tex.stackexchange.com/questions/26278
+\defbeamertemplate{block begin}{notitle}
+{
+  \usebeamerfont{normal text}%
+  \vskip \parskip
+  \begin{beamercolorbox}[colsep*=.75ex,vmode]{normal text}%
+}
+
+\setbeamertemplate{block begin}[notitle]
+
 \setbeamertemplate{quote begin}{
   \vskip 5pt
   \begin{beamercolorbox}[wd=\textwidth,center,rounded=true]{quotation}%
