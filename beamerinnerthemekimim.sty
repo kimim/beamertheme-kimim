@@ -26,6 +26,8 @@
 
 \ProcessOptionsBeamer
 
+\renewcommand{\thempfootnote}{\ifcase\value{mpfootnote}\or\textasteriskcentered\or\textdagger\or\textdaggerdbl\fi}
+
 \def\itemsymbol{\raisebox{0.3ex}{$\circ$}}
 \def\subitemsymbol{\raisebox{0.3ex}{$\triangleright$}}
 \def\subsubitemsymbol{\raisebox{0.3ex}{$\lozenge$}}
