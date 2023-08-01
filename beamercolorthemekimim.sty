@@ -20,7 +20,6 @@
 % me over: https://github.com/kimim/beamertheme-kimim
 
 \ProvidesPackage{beamercolorthemekimim}[v2.0.0]
-\RequirePackage{ifthen}
 \mode<presentation>
 
 \newboolean{darkmode}
@@ -39,7 +38,7 @@
 \definecolor{kimim@text@blue}{HTML}{4169e1}
 \definecolor{kimim@text@navy}{HTML}{000080}
 
-\ifthenelse{\boolean{darkmode}}{
+\ifdarkmode
   \newcommand{\beamertextcolor}{kimim@text@white}%
   \newcommand{\beamerbgcolor}{kimim@text@black}%
   \newcommand{\beamerblockbgcolor}{kimim@text@blockbg}
@@ -50,7 +49,7 @@
   \newcommand{\beameralertcolor}{kimim@text@red}
   \newcommand{\beamerlinkcolor}{kimim@text@blue}
   \newcommand{\beamerlogocolor}{kimim@text@kimimblue}
-}{%
+\else%
   \newcommand{\beamertextcolor}{kimim@text@black}%
   \newcommand{\beamerbgcolor}{kimim@text@white}%
   \newcommand{\beamerblockbgcolor}{kimim@text@blockbg}
@@ -61,7 +60,7 @@
   \newcommand{\beameralertcolor}{kimim@text@red}
   \newcommand{\beamerlinkcolor}{kimim@text@blue}
   \newcommand{\beamerlogocolor}{kimim@text@kimimblue}
-}
+\fi
 
 \setbeamercolor*{normal text}{fg=\beamertextcolor}
 \setbeamercolor*{alerted text}{fg=\beameralertcolor}

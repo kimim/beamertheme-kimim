@@ -20,7 +20,6 @@
 % me over: https://github.com/kimim/beamertheme-kimim
 
 \ProvidesPackage{beamerouterthemekimim}[v2.0.0]
-\RequirePackage{ifthen}
 \RequirePackage{etoolbox}
 \RequirePackage{calc}
 \RequirePackage{graphicx}
@@ -45,12 +44,12 @@
 \DeclareOptionBeamer{nofooterlogo}{\setboolean{nofooterlogo}{true}}
 \DeclareOptionBeamer{nofooter}{\setboolean{nofooter}{true}}
 \DeclareOptionBeamer{customlogo}{\setboolean{customlogo}{true}}
+
 \ProcessOptionsBeamer
 
 \newcommand{\showpagenum}{%
-  \insertframenumber\ifthenelse{\boolean{nomaxslides}}{%
-  }{/\inserttotalframenumber%
-  }%
+  \insertframenumber\ifnomaxslides/\inserttotalframenumber%
+  \fi%
 }
 
 \newlength{\myleftmargin}
@@ -77,8 +76,8 @@
   \vskip 3pt
   \begin{beamercolorbox}[sep=0ex, wd=.95\paperwidth, left]{frametitle}
     \usebeamerfont{frametitle}%
-    \ifthenelse{\boolean{noframetitle}}{%
-    }{
+    \ifnoframetitle
+    \else
       \ifbeamer@inappendix%
           \appendixname%
       \else%
@@ -96,11 +95,11 @@
               \fi%
           \fi%
       \fi%
-    }
+    \fi
   \end{beamercolorbox}%
   \begin{beamercolorbox}[sep=0ex, wd=.95\paperwidth, left]{subframetitle}
-    \ifthenelse{\boolean{noframetitle}}{%
-    }{
+    \ifnoframetitle
+    \else
       \ifbeamer@noframenumbering% Overview index page
       \else%
           \ifx\insertsection\@empty% Outline page
@@ -112,7 +111,7 @@
               \usebeamerfont{framesubtitle}\insertframetitle%
           \fi%
       \fi%
-    }
+    \fi
   \end{beamercolorbox}%
 }%
 
@@ -154,11 +153,11 @@
     %\today $\quad$ $~~$
     \showpagenum
   }{%
-    \ifthenelse{\boolean{customlogo}}{%
+    \ifcustomlogo%
       \insertlogoimage{2}
-    }{%
+    \else
       \drawlogo{0.1}%
-    }
+    \fi
   }
 }
 
@@ -173,12 +172,12 @@
 
 \defbeamertemplate{footline}{kimimfooterdisable}{}
 
-\ifthenelse{\boolean{nofooterlogo}}{%
+\ifnofooterlogo
   \setbeamertemplate{footline}[kimimfooternologo]
-}{}
+\fi
 
-\ifthenelse{\boolean{nofooter}}{%
+\ifnofooter%
   \setbeamertemplate{footline}[kimimfooterdisable]
-}{}
+\fi
 
 \mode<all>

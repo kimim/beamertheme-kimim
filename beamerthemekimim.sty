@@ -55,7 +55,7 @@
 
 \newcommand{\drawbg}{
   \begin{tikzpicture}
-    \fill[left color=\beamerlogocolor,right color=white,shading angle=90] (0,0) rectangle (\paperwidth,-0.6\paperheight);
+    \fill[left color=\beamerlogocolor,right color=white,shading angle=90] (0,0) rectangle (\paperwidth,-0.65\paperheight);
     \begin{scope}[shift={(0.3\paperheight,-0.3\paperheight)}]
       \fill[red!30!white,semitransparent]   ( 90:0.06\paperheight) circle (0.1\paperheight);
       \fill[green!30!white,semitransparent] (210:0.06\paperheight) circle (0.1\paperheight);
@@ -99,6 +99,7 @@
 \DeclareOptionBeamer{hasfooter}{\PassOptionsToPackage{hasfooter}{beamerouterthemekimim}}
 \DeclareOptionBeamer{customfont}{\PassOptionsToPackage{customfont}{beamerfontthemekimim}}
 \DeclareOptionBeamer{customlogo}{\PassOptionsToPackage{customlogo}{beamerouterthemekimim}}
+\DeclareOptionBeamer{custombg}{\PassOptionsToPackage{custombg}{beamerinnerthemekimim}}
 \DeclareOptionBeamer{noframetitle}{\PassOptionsToPackage{noframetitle}{beamerouterthemekimim}}
 
 \ProcessOptionsBeamer

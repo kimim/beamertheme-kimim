@@ -20,11 +20,15 @@
 % me over: https://github.com/kimim/beamertheme-kimim
 
 \ProvidesPackage{beamerinnerthemekimim}[v2.0.0]
-\RequirePackage{ifthen}
-
 \mode<presentation>
 
+\newboolean{custombg}
+\setboolean{custombg}{false}
+\DeclareOptionBeamer{custombg}{\setboolean{custombg}{true}}
+
 \ProcessOptionsBeamer
+
+%\renewcommand{\thempfootnote}{\ifcase\value{mpfootnote}\or\textasteriskcentered\or\textdagger\or\textdaggerdbl\fi}
 
 \def\itemsymbol{\raisebox{0.3ex}{$\circ$}}
 \def\subitemsymbol{\raisebox{0.3ex}{$\triangleright$}}
@@ -103,7 +107,8 @@
 
 \setbeamertemplate{background}{
   \ifnum\thepage=1%
-  \drawbg
+  %% use a 5:2 picture for title page background
+    \ifcustombg\includegraphics[width=1\paperwidth]{beamer/bg}\else\drawbg\fi
   \fi%
 }
 
@@ -116,7 +121,7 @@
     \begin{beamercolorbox}[wd=\textwidth]{title}%
       \inserttitle%
     \end{beamercolorbox}
-    \vskip -5pt
+    \vskip -3pt
     \begin{beamercolorbox}[wd=\textwidth]{subtitle}%
       \ifx\insertsubtitle\@empty%
       \else%
@@ -137,11 +142,7 @@
     \begin{beamercolorbox}[wd=.25\paperwidth, right, ht=.06\paperheight]{title}
       \vbox to .06\paperheight{%
         \vfill%
-          \ifthenelse{\boolean{customlogo}}{
-            \insertlogoimage{3}
-          }{
-            \drawlogo{0.15}%
-          }
+          \ifcustomlogo\insertlogoimage{3}\else\drawlogo{0.15}\fi
       }%
     \end{beamercolorbox}%
   \end{beamercolorbox}
@@ -151,7 +152,7 @@
       Document ID:
       \hspace{20pt}Revision:
       \hspace{10pt}Updated on: {\insertdate}}%
-      \vskip 14pt
+      \vskip 12pt
   \end{beamercolorbox}%
 }
 
@@ -174,11 +175,7 @@
   \oldappendix
   \begin{frame}[plain,noframenumbering]
     \centering
-    \ifthenelse{\boolean{customlogo}}{
-      \insertlogoimage{8}
-    }{
-      \drawlogo{0.5}%
-    }
+    \ifcustomlogo\insertlogoimage{8}\else\drawlogo{0.5}\fi
   \end{frame}
 }
 \mode<all>
